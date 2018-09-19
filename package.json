@@ -1,0 +1,30 @@
+{
+  "name": "kevinsays",
+  "version": "1.0.0",
+  "description": "Do what I say",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinmjacobs/kevinsays.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinmjacobs/kevinsays/issues"
+  },
+  "homepage": "https://github.com/kevinmjacobs/kevinsays#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "react": "^16.5.2",
+    "webpack": "^4.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
