@@ -12,4 +12,9 @@ app.use(parser.urlencoded( { extended: true } ));
 app.use(express.static(path.join(__dirname, '../static')));
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.listen(PORT, () => console.log( `Connected to PORT: ${PORT}` ));
+app.listen(PORT, (err) => {
+  if (err) {
+    throw err;
+  } 
+  console.log( `Connected to PORT: ${PORT}`) 
+});
