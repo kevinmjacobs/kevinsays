@@ -1,11 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
-
-class App extends React.Component {
-  return() {
-    <div>Hello</div>
-  }
+const App = () => {
+  return (
+    <div>Test</div>
+  )
 }
 
-render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
