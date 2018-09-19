@@ -3,9 +3,9 @@ const SRC_DIR = path.resolve(__dirname, './src');
 const BUILD_DIR = path.resolve(__dirname, './build');
 
 module.exports = {
-  entry: path.resolve(SRC_DIR, 'index.js'),
+  entry: path.resolve(SRC_DIR, 'index.jsx'),
   output: {
-    filname: 'bundle.js',
+    filename: 'bundle.js',
     path: BUILD_DIR,
     publicPath: './src'
   },
