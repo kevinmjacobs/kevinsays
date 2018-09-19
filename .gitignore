@@ -61,5 +61,4 @@ typings/
 .next
 
 # build/bundle files
-build/
 build/bundle.js
