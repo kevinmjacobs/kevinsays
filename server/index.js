@@ -12,6 +12,6 @@ app.use(parser.urlencoded( { extended: true } ));
 app.use(express.static(path.join(__dirname, '../static')));
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.get('/', (req, res) => res.send(200))
+app.get('*', (req, res) => res.send(200))
 
 app.listen(PORT, console.log( `Listening to PORT: ${PORT}`));
