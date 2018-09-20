@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBody, AppHeader} from './AppStyles'
+import { TopDiv, BottomDiv, TopLeftButton, TopRightButton, BottomLeftButton, BottomRightButton, AppHeader } from './AppStyles'
 
 export default class App extends React.Component {
   constructor() {
@@ -10,7 +10,14 @@ export default class App extends React.Component {
     return(
       <div>
         <AppHeader>Kevin Says</AppHeader>
-        Do what I say!
+        <TopDiv>
+          <TopLeftButton />
+          <TopRightButton />
+        </TopDiv>
+        <BottomDiv>
+          <BottomLeftButton />
+          <BottomRightButton />
+        </BottomDiv>
       </div>
     )
   } 
