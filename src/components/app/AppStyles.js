@@ -4,6 +4,12 @@ export const AppHeader = styles.h1`
   text-align: center;
 `;
 
+export const Score = styles.div`
+  text-align: center;
+  margin: 16px
+  font-size: 16px;
+`;
+
 export const SemiCircle = styles.div`
   text-align: center;
 `;

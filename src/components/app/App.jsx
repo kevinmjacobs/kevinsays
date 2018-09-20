@@ -2,6 +2,7 @@ import React from 'react';
 import { 
   SemiCircle, 
   StartButton,
+  Score,
   ButtonContainer,
   TopLeftButton, 
   TopLeftInsert, 
@@ -22,7 +23,8 @@ export default class App extends React.Component {
       selected: 0,
       guessIndex: 0,
       timeInterval: 1000,
-      score: 0
+      score: 0,
+      bestScore: 0
     }
     this.startGame = this.startGame.bind(this);
     this.generateNumber = this.generateNumber.bind(this);
@@ -43,7 +45,6 @@ export default class App extends React.Component {
     let factor = 0;
     let timeInterval = this.state.timeInterval
     this.state.pattern.forEach((selected) => {
-      console.log(selected)
       setTimeout(() => { this.setState({ selected }); }, timeInterval * factor)
       factor++;
       setTimeout(() => { this.setState({ selected: 0 }); }, timeInterval * factor)
@@ -58,7 +59,7 @@ export default class App extends React.Component {
         this.setState({
           guessIndex: 0,
           score: this.state.score + 1,
-          timeInterval: this.state.timeInterval * .95
+          timeInterval: this.state.timeInterval * .90
         }, () => {
           this.state.pattern.push(this.generateNumber());
           this.highlightButtons();
@@ -69,11 +70,11 @@ export default class App extends React.Component {
         })
       }
     } else {
-      console.log('Score',this.state.score);
       this.setState({
         pattern: [],
-        selected: 0,
+        selected: this.state.pattern[this.state.guessIndex],
         guessIndex: 0,
+        bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore,
         score: 0
       })
     }
@@ -99,6 +100,8 @@ export default class App extends React.Component {
             <BottomRightInsert />
           </BottomRightButton>
         </SemiCircle>
+        <Score>Score: {this.state.score}</Score>
+        <Score>Best Score: {this.state.bestScore}</Score>
         <ButtonContainer>
           <StartButton onClick={() => this.startGame()}>Start</StartButton>
         </ButtonContainer>  
