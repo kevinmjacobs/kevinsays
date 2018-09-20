@@ -8,7 +8,31 @@ export const SemiCircle = styles.div`
   text-align: center;
 `;
 
-// Button formatting - base properies with each quadrants specific dimensions
+export const ButtonContainer = styles.div`
+  margin: 16px
+  text-align: center;
+`
+
+export const StartButton = styles.button`
+  outline: none;
+  font-size: 16px;
+  background: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 3px
+  &:hover {
+    background: white;
+    color: black;
+    border: 2px solid black;
+  }
+  &:active {
+    background: black;
+    color: white;
+    border: 2px solid white;
+  }
+`
+
+// Game Button formatting - base properies with each quadrants specific dimensions
 const Button = styles.div`
   margin: 2.5px 5px;
   display: inline-block

@@ -1,6 +1,8 @@
 import React from 'react';
 import { 
   SemiCircle, 
+  StartButton,
+  ButtonContainer,
   TopLeftButton, 
   TopLeftInsert, 
   TopRightButton,
@@ -55,6 +57,9 @@ export default class App extends React.Component {
             <BottomRightInsert />
           </BottomRightButton>
         </SemiCircle>
+        <ButtonContainer>
+          <StartButton>Start</StartButton>
+        </ButtonContainer>  
       </div>
     )
   } 
