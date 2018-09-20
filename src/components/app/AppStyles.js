@@ -12,7 +12,7 @@ export const BottomDiv = styles.div`
   text-align: center;
 `;
 
-export const TopLeftButton = styles.span`
+export const TopLeftButton = styles.div`
   margin: 2.5px 5px;
   display: inline-block
   width: 100px;
@@ -24,7 +24,6 @@ export const TopLeftButton = styles.span`
   &:hover {
     background-image: radial-gradient(farthest-side at 50%, white, #f22c36);
   }
-
 
 `;
 
@@ -68,5 +67,58 @@ export const BottomLeftButton = styles.span`
   -webkit-border-radius: 0 0 0 100px;
   &:hover {
     background-image: radial-gradient(farthest-side at 50%, white, #2852fa);
+  }
+`;
+
+export const TopLeftInsert= styles.div`
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-radius: 50px 0 0 0;
+  -moz-border-radius: 50px 0 0 0;
+  -webkit-border-radius: 50px 0 0 0;
+  &:hover {
+    background: black;
+  }
+`;
+
+export const TopRightInsert= styles.div`
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-radius: 0 50px 0 0;
+  -moz-border-radius: 0 50px 0 0;
+  -webkit-border-radius: 0 50px 0 0;
+  &:hover {
+    background: black;
+  }
+`;
+
+export const BottomLeftInsert= styles.div`
+  margin-bottom: 50px;
+  margin-left: 50px;
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-radius: 0 0 0 50px;
+  -moz-border-radius: 0 0 0 50px;
+  -webkit-border-radius: 0 0 0 50px;
+  &:hover {
+    background: black;
+  }
+`;
+
+export const BottomRightInsert= styles.div`
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-radius: 0 0 50px 0;
+  -moz-border-radius: 0 0 50px 0;
+  -webkit-border-radius: 0 0 50px 0;
+  &:hover {
+    background: black;
   }
 `;
