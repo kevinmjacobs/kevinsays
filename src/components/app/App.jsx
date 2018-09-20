@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
-  TopDiv, 
-  BottomDiv, 
+  SemiCircle, 
   TopLeftButton, 
   TopLeftInsert, 
   TopRightButton,
@@ -40,22 +39,22 @@ export default class App extends React.Component {
     return(
       <div>
         <AppHeader>Kevin Says</AppHeader>
-        <TopDiv>
+        <SemiCircle>
           <TopLeftButton>
             <TopLeftInsert />
           </TopLeftButton>
           <TopRightButton>
             <TopRightInsert />
           </TopRightButton>
-        </TopDiv>
-        <BottomDiv>
+        </SemiCircle>
+        <SemiCircle>
           <BottomLeftButton>
             <BottomLeftInsert />
           </BottomLeftButton>
           <BottomRightButton>
             <BottomRightInsert />
           </BottomRightButton>
-        </BottomDiv>
+        </SemiCircle>
       </div>
     )
   } 
