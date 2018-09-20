@@ -7,7 +7,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR,
-    publicPath: './src'
   },
   module: {
     rules: [

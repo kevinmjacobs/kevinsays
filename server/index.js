@@ -4,7 +4,7 @@ const parser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = 1337;
+const PORT = 3000;
 
 app.use(helmet());
 app.use(parser.json());
@@ -12,9 +12,6 @@ app.use(parser.urlencoded( { extended: true } ));
 app.use(express.static(path.join(__dirname, '../static')));
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.listen(PORT, (err) => {
-  if (err) {
-    throw err;
-  } 
-  console.log( `Connected to PORT: ${PORT}`) 
-});
+app.listen(PORT, console.log( `Connected to PORT: ${PORT}`));
+
+process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
