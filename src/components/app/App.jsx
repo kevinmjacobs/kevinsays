@@ -21,6 +21,7 @@ export default class App extends React.Component {
       pattern: [],
       selected: 0,
       guessIndex: 0,
+      timeInterval: 1000,
       score: 0
     }
     this.startGame = this.startGame.bind(this);
@@ -39,22 +40,25 @@ export default class App extends React.Component {
   }
 
   highlightButtons() {
-    this.state.pattern.forEach(selected => {
+    let factor = 0;
+    let timeInterval = this.state.timeInterval
+    this.state.pattern.forEach((selected) => {
       console.log(selected)
-      this.setState({ selected });
-      setTimeout(() => { this.setState({ selected: 0 }); }, 1000)
+      setTimeout(() => { this.setState({ selected }); }, timeInterval * factor)
+      factor++;
+      setTimeout(() => { this.setState({ selected: 0 }); }, timeInterval * factor)
+      factor++;
     })
   }
 
   guessPattern(e) {
-    console.log('clicked id', e.target.id, 'first pattern', ''+this.state.pattern[this.state.guessIndex]);
     if (e.target.id === ''+this.state.pattern[this.state.guessIndex]) {
       let newIndex = this.state.guessIndex + 1;
-      console.log(newIndex)
       if (newIndex >= this.state.pattern.length) {
         this.setState({
           guessIndex: 0,
-          score: this.state.score++
+          score: this.state.score + 1,
+          timeInterval: this.state.timeInterval * .95
         }, () => {
           this.state.pattern.push(this.generateNumber());
           this.highlightButtons();
