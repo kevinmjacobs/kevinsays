@@ -67,7 +67,7 @@ export default class App extends React.Component {
         this.setState({
           guessIndex: 0,
           score: this.state.score + 1,
-          timeInterval: this.state.timeInterval * 0.8
+          timeInterval: this.state.timeInterval * 0.85
         }, () => {
           this.state.pattern.push(this.generateNumber());
           this.highlightButtons();
