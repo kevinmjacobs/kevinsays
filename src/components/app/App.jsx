@@ -12,8 +12,7 @@ import {
   BottomLeftInsert,
   BottomRightButton, 
   BottomRightInsert,
-  AppHeader,
-  YouLostMessage
+  AppHeader
 } from './AppStyles'
 
 export default class App extends React.Component {
