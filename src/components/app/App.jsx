@@ -24,12 +24,14 @@ export default class App extends React.Component {
       guessIndex: 0,
       timeInterval: 1000,
       score: 0,
-      bestScore: 0
+      bestScore: 0,
+      hidden: 0
     }
     this.startGame = this.startGame.bind(this);
     this.generateNumber = this.generateNumber.bind(this);
     this.highlightButtons = this.highlightButtons.bind(this);
     this.guessPattern = this.guessPattern.bind(this);
+    this.gameOver = this.gameOver.bind(this);
   }
 
   generateNumber() {
@@ -78,12 +80,17 @@ export default class App extends React.Component {
         })
       }
     } else {
-      this.setState({
-        selected: this.state.pattern[this.state.guessIndex],
-        guessIndex: 0,
-        bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore
-      })
+      this.gameOver();
     }
+  }
+
+  gameOver() {
+    this.setState({
+      selected: this.state.pattern[this.state.guessIndex],
+      guessIndex: 0,
+      bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore,
+      hidden: this.state.pattern[this.state.guessIndex]
+    })
   }
 
   render() {
@@ -91,18 +98,18 @@ export default class App extends React.Component {
       <div>
         <AppHeader>Kevin Says</AppHeader>
         <SemiCircle>
-          <TopLeftButton id={1} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <TopLeftButton id={1} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <TopLeftInsert />
           </TopLeftButton>
-          <TopRightButton id={2} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <TopRightButton id={2} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <TopRightInsert />
           </TopRightButton>
         </SemiCircle>
         <SemiCircle>
-          <BottomLeftButton id={3} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <BottomLeftButton id={3} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <BottomLeftInsert />
           </BottomLeftButton>
-          <BottomRightButton id={4} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <BottomRightButton id={4} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <BottomRightInsert />
           </BottomRightButton>
         </SemiCircle>
