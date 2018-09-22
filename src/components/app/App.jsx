@@ -44,7 +44,8 @@ export default class App extends React.Component {
       selected: 0,
       guessIndex: 0,
       timeInterval: 1000,
-      score: 0
+      score: 0,
+      hidden: 0
     }, () => {
       this.state.pattern.push(this.generateNumber());
       this.highlightButtons();
