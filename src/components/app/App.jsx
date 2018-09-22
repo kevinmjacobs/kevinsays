@@ -12,7 +12,8 @@ import {
   BottomLeftInsert,
   BottomRightButton, 
   BottomRightInsert,
-  AppHeader 
+  AppHeader,
+  YouLostMessage
 } from './AppStyles'
 
 export default class App extends React.Component {
@@ -25,7 +26,8 @@ export default class App extends React.Component {
       timeInterval: 1000,
       score: 0,
       bestScore: 0,
-      hidden: 0
+      hidden: 0,
+      startMessage: 'Start'
     }
     this.startGame = this.startGame.bind(this);
     this.generateNumber = this.generateNumber.bind(this);
@@ -45,10 +47,12 @@ export default class App extends React.Component {
       guessIndex: 0,
       timeInterval: 1000,
       score: 0,
-      hidden: 0
+      hidden: 0,
+      startMessage: 'Start'
     }, () => {
       this.state.pattern.push(this.generateNumber());
-      this.highlightButtons();
+      setTimeout(this.highlightButtons, 500)
+      ;
     })
   }
 
@@ -90,7 +94,8 @@ export default class App extends React.Component {
       selected: this.state.pattern[this.state.guessIndex],
       guessIndex: 0,
       bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore,
-      hidden: this.state.pattern[this.state.guessIndex]
+      hidden: this.state.pattern[this.state.guessIndex],
+      startMessage: 'Try Again?'
     })
   }
 
@@ -117,7 +122,7 @@ export default class App extends React.Component {
         <Score>Score: {this.state.score}</Score>
         <Score>Best Score: {this.state.bestScore}</Score>
         <ButtonContainer>
-          <StartButton onClick={() => this.startGame()}>Start</StartButton>
+          <StartButton onClick={() => this.startGame()}>{this.state.startMessage}</StartButton>
         </ButtonContainer>  
       </div>
     )

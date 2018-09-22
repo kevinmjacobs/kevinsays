@@ -19,6 +19,12 @@ export const ButtonContainer = styles.div`
   text-align: center;
 `
 
+export const YouLostMessage = styles(SemiCircle)`
+  width: 220px;
+  height: 109px;
+  display: inline-block;
+`
+
 export const StartButton = styles.button`
   outline: none;
   font-size: 16px;
