@@ -12,7 +12,7 @@ import {
   BottomLeftInsert,
   BottomRightButton, 
   BottomRightInsert,
-  AppHeader 
+  AppHeader
 } from './AppStyles'
 
 export default class App extends React.Component {
@@ -24,12 +24,15 @@ export default class App extends React.Component {
       guessIndex: 0,
       timeInterval: 1000,
       score: 0,
-      bestScore: 0
+      bestScore: 0,
+      hidden: 0,
+      startMessage: 'Start'
     }
     this.startGame = this.startGame.bind(this);
     this.generateNumber = this.generateNumber.bind(this);
     this.highlightButtons = this.highlightButtons.bind(this);
     this.guessPattern = this.guessPattern.bind(this);
+    this.gameOver = this.gameOver.bind(this);
   }
 
   generateNumber() {
@@ -42,10 +45,13 @@ export default class App extends React.Component {
       selected: 0,
       guessIndex: 0,
       timeInterval: 1000,
-      score: 0
+      score: 0,
+      hidden: 0,
+      startMessage: 'Start'
     }, () => {
       this.state.pattern.push(this.generateNumber());
-      this.highlightButtons();
+      setTimeout(this.highlightButtons, 500)
+      ;
     })
   }
 
@@ -78,12 +84,18 @@ export default class App extends React.Component {
         })
       }
     } else {
-      this.setState({
-        selected: this.state.pattern[this.state.guessIndex],
-        guessIndex: 0,
-        bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore
-      })
+      this.gameOver();
     }
+  }
+
+  gameOver() {
+    this.setState({
+      selected: this.state.pattern[this.state.guessIndex],
+      guessIndex: 0,
+      bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore,
+      hidden: this.state.pattern[this.state.guessIndex],
+      startMessage: 'Try Again?'
+    })
   }
 
   render() {
@@ -91,25 +103,25 @@ export default class App extends React.Component {
       <div>
         <AppHeader>Kevin Says</AppHeader>
         <SemiCircle>
-          <TopLeftButton id={1} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <TopLeftButton id={1} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <TopLeftInsert />
           </TopLeftButton>
-          <TopRightButton id={2} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <TopRightButton id={2} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <TopRightInsert />
           </TopRightButton>
         </SemiCircle>
         <SemiCircle>
-          <BottomLeftButton id={3} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <BottomLeftButton id={3} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <BottomLeftInsert />
           </BottomLeftButton>
-          <BottomRightButton id={4} selected={this.state.selected} onClick={(e) => this.guessPattern(e)}>
+          <BottomRightButton id={4} selected={this.state.selected} hidden={this.state.hidden} onClick={(e) => this.guessPattern(e)}>
             <BottomRightInsert />
           </BottomRightButton>
         </SemiCircle>
         <Score>Score: {this.state.score}</Score>
         <Score>Best Score: {this.state.bestScore}</Score>
         <ButtonContainer>
-          <StartButton onClick={() => this.startGame()}>Start</StartButton>
+          <StartButton onClick={() => this.startGame()}>{this.state.startMessage}</StartButton>
         </ButtonContainer>  
       </div>
     )
