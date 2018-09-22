@@ -52,7 +52,7 @@ export const TopLeftButton = styles(Button)`
   -moz-border-radius: 100px 0 0 0;
   -webkit-border-radius: 100px 0 0 0;
   background-image: ${props => props.selected === 1 ? "radial-gradient(farthest-side at 60%, white, #f22c36)" :  "none"};
-  &:hover {
+  &:active {
     background-image: radial-gradient(farthest-side at 60%, white, #f22c36);
   }
 `;
@@ -63,7 +63,7 @@ export const TopRightButton = styles(Button)`
   -moz-border-radius: 0 100px 0 0;
   -webkit-border-radius: 0 100px 0 0;
   background-image: ${props => props.selected === 2 ? "radial-gradient(farthest-side at 60%, white, #01b510)" :  "none"};
-  &:hover {
+  &:active {
     background-image: radial-gradient(farthest-side at 60%, white, #01b510);
   }
 
@@ -75,7 +75,7 @@ export const BottomRightButton = styles(Button)`
   -moz-border-radius: 0 0 100px 0;
   -webkit-border-radius: 0 0 100px 0;
   background-image: ${props => props.selected === 4 ? "radial-gradient(farthest-side at 60%, white, yellow)" :  "none"};
-  &:hover {
+  &:active {
     background-image: radial-gradient(farthest-side at 60%, white, yellow);
   }
 `;
@@ -86,7 +86,7 @@ export const BottomLeftButton = styles(Button)`
   -moz-border-radius: 0 0 0 100px;
   -webkit-border-radius: 0 0 0 100px;
   background-image: ${props => props.selected === 3 ? "radial-gradient(farthest-side at 60%, white, #2852fa)" :  "none"};
-  &:hover {
+  &:active {
     background-image: radial-gradient(farthest-side at 60%, white, #2852fa);
   }
 `;
