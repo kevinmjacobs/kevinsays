@@ -37,8 +37,16 @@ export default class App extends React.Component {
   }
 
   startGame() {
-    this.state.pattern.push(this.generateNumber());
-    this.highlightButtons();
+    this.setState({
+      pattern: [],
+      selected: 0,
+      guessIndex: 0,
+      timeInterval: 1000,
+      score: 0
+    }, () => {
+      this.state.pattern.push(this.generateNumber());
+      this.highlightButtons();
+    })
   }
 
   highlightButtons() {
@@ -59,7 +67,7 @@ export default class App extends React.Component {
         this.setState({
           guessIndex: 0,
           score: this.state.score + 1,
-          timeInterval: this.state.timeInterval * .90
+          timeInterval: this.state.timeInterval * 0.8
         }, () => {
           this.state.pattern.push(this.generateNumber());
           this.highlightButtons();
@@ -71,11 +79,9 @@ export default class App extends React.Component {
       }
     } else {
       this.setState({
-        pattern: [],
         selected: this.state.pattern[this.state.guessIndex],
         guessIndex: 0,
-        bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore,
-        score: 0
+        bestScore: this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore
       })
     }
   }
